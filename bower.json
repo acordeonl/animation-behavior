@@ -4,7 +4,7 @@
     "acordeonl <admin@acorde.onl>"
   ],
   "description": "",
-  "main":[ "hero-behavior/hero-from-behavior.html" , "hero-behavior/hero-to-behavior.html","ripple-behavior/ripple-from-behavior.html" , "ripple-behavior/ripple-to.html","scale-up-behavior/scale-up-behavior.html" ],
+  "main":[ "hero-from-behavior.html" , "hero-to-behavior.html","ripple-from-behavior.html" , "ripple-to.html","scale-up-behavior.html" ],
   "keywords": [
     "web-components",
     "polymer"
