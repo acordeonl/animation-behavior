@@ -1,0 +1,29 @@
+<link rel="import" href="/bower_components/neon-animation/neon-animation-runner-behavior.html">
+
+<script>
+    ScaleUpBehaviorImpl={
+        properties:{
+            animationConfig: {
+                value: function() {
+                    return {
+                        'entry': [{
+                            name: 'fade-in-animation',
+                            node: this,
+                            timing: {
+                                duration: 1000
+                            }
+                        }, {
+                            name: 'scale-up-animation',
+                            node: this,
+                            timing: {
+                                duration: 500
+                            }
+                        }]
+                    };
+                }
+            }
+        },
+    };
+
+    ScaleUpBehavior = [Polymer.NeonAnimationRunnerBehavior,ScaleUpBehaviorImpl] ;
+</script>
