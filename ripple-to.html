@@ -44,10 +44,13 @@ For an overlayed drop menu:
                 opacity: 0;
                 background-color: var(--ripple-color);
             }
+            [home]{
+                height:100vh;
+                width:100vw;
+                position:absolute; 
+            }
         </style>
         <!-- local DOM -->
-        <div id="to">
-        </div>
         <div home>
             <content></content>
         </div>
@@ -68,13 +71,9 @@ For an overlayed drop menu:
                 animationConfig: {
                     value: function() {
                         return {
-                            'entry': [{
-                                name: 'ripple-animation',
-                                toPage: this,
-                                id: 'ripple'
-                            }, {
+                            'entry': [ {
                                 name: 'fade-out-animation',
-                                node: this.$.to,
+                                node: this.$$('[home]'),
                                 timing: {
                                     duration: 400
                                 }
@@ -85,14 +84,7 @@ For an overlayed drop menu:
                                     duration: 700
                                 }
                             }],
-                            'exit': [{
-                                name: 'reverse-ripple-animation',
-                                id: 'ripple',
-                                fromPage: this,
-                                timing: {
-                                    duration: 350
-                                }
-                            }, {
+                            'exit': [ {
                                 name: 'fade-out-animation',
                                 node: this.$$('[home]'),
                                 timing: {
@@ -100,18 +92,11 @@ For an overlayed drop menu:
                                 }
                             }, {
                                 name: 'fade-out-animation',
-                                node: this.$.to,
+                                node: this.$$('[home]'),
                                 timing: {
                                     duration: 600
                                 }
                             }]
-                        };
-                    }
-                },
-                sharedElements: {
-                    value: function() {
-                        return {
-                            'ripple': this.$.to
                         };
                     }
                 },
