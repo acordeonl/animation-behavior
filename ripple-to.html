@@ -36,13 +36,20 @@ For an overlayed drop menu:
                 --ripple-color:var(--theme-color1,#4775D1) ;
             }
             #to {
+                margin:0;
                 top: 0;
+                right: 0;
+                bottom: 0;
                 left: 0;
                 position: absolute;
-                width: 100vw;
-                height: 100vh;
+                width: 1000px;
+                height: 1000px;
                 opacity: 0;
                 background-color: var(--ripple-color);
+                will-change:transform ;
+            }
+            div[home]{
+                will-change:opacity ;
             }
         </style>
         <!-- local DOM -->
