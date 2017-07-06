@@ -22,7 +22,11 @@
                             {
                                 name: 'ripple-animation',
                                 id: 'ripple',
-                                fromPage: this
+                                fromPage: this,
+                                timing:{
+                                    duration:250,
+                                    easing:'cubic-bezier(0.550, 0.055, 0.675, 0.190)'
+                                }
                             }, {
                                 name: 'fade-out-animation',
                                 node: this,
@@ -38,7 +42,11 @@
                                 toPage: this
                             }, {
                                 name: 'fade-in-animation',
-                                node: this
+                                node: this,
+                                timing:{
+                                    duration: 400,
+                                    easing:'cubic-bezier(0.550, 0.055, 0.675, 0.190)'
+                                }
                             }
                         ],
                         'slideIcons': [
@@ -83,13 +91,12 @@
             },
             sharedElements: {
                 value: function () {
-                    return {'ripple': this.$.cuenta};
+                    return {'ripple': this.$.user};
                 }
             }
         },
         _setRippleTo: function (ripple) {
-            var selector = "#" + ripple;
-            this.sharedElements.ripple = this.$$(selector);
+            this.sharedElements.ripple = this.$$("#" + ripple);
         }
     };
     RippleFromBehaviorTmp = [Polymer.NeonSharedElementAnimatableBehavior, RippleFromBehaviorImpl];
