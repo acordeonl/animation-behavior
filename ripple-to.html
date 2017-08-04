@@ -1,8 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../neon-animation/neon-animation.html">
-<link rel="import" href="../neon-animation/neon-animations.html">
-<link rel="import" href="../neon-animation/neon-animation-runner-behavior.html">
 <link rel="import" href="../neon-animation/neon-shared-element-animation-behavior.html">
+<link rel="import" href="../neon-animation/neon-animation-runner-behavior.html">
+<link rel="import" href="../neon-animation/neon-animations.html">
 
 
 <!--
@@ -37,38 +36,20 @@ For an overlayed drop menu:
                 --ripple-color:var(--theme-color1,#4775D1) ;
             }
             #to {
-                height:100%;
-                width:100% ;
-                margin:0;
+                top: 0;
+                left: 0;
                 position: absolute;
+                width: 100vw;
+                height: 100vh;
                 opacity: 0;
-                overflow: hidden;
-                will-change:transform ;
                 background-color: var(--ripple-color);
-            }
-            div[container]{
-                top:0 ;
-                left:0 ;
-                position:relative;
-                height:100vh;
-                width:100vw;
-            }
-            div[home]{
-                top:0 ;
-                left:0 ;
-                margin:0 ;
-                height:100%;
-                width:100%;
             }
         </style>
         <!-- local DOM -->
-        <div container>
-            <div id="to">
-            </div>
-            <div home>
-                <content></content>
-            </div>
-
+        <div id="to">
+        </div>
+        <div home>
+            <content></content>
         </div>
 
     </template>
@@ -90,24 +71,20 @@ For an overlayed drop menu:
                             'entry': [{
                                 name: 'ripple-animation',
                                 toPage: this,
-                                id: 'ripple',
-                                timing:{
-                                    duration:500
-                                }
+                                id: 'ripple'
                             }, {
                                 name: 'fade-out-animation',
                                 node: this.$.to,
                                 timing: {
                                     duration: 400
-                                },
-                            },
-                            {
+                                }
+                            }, {
                                 name: 'fade-in-animation',
                                 node: this.$$('[home]'),
                                 timing: {
                                     delay:100,
                                     duration: 300,
-                                    easing:'cubic-bezier(0.02, 0.06, 0.85, -0.15)'
+                                     easing:'cubic-bezier(0.02, 0.06, 0.85, -0.15)'
                                 }
                             }],
                             'exit': [{
@@ -116,14 +93,20 @@ For an overlayed drop menu:
                                 fromPage: this,
                                 timing: {
                                     duration: 400,
-                                    easing:'cubic-bezier(0, 0.81, 0.35, 0.98)'
+                                     easing:'cubic-bezier(0, 0.81, 0.35, 0.98)'
+                                }
+                            }, {
+                                name: 'fade-out-animation',
+                                node: this.$$('[home]'),
+                                timing: {
+                                    duration: 250
                                 }
                             }, {
                                 name: 'fade-out-animation',
                                 node: this.$.to,
                                 timing: {
                                     duration: 700,
-                                    easing:'cubic-bezier(0, 0.81, 0.35, 0.98)'
+                                     easing:'cubic-bezier(0, 0.81, 0.35, 0.98)'
                                 }
                             }]
                         };
@@ -141,6 +124,11 @@ For an overlayed drop menu:
                     value:'#4775D1'
                 }
             }
+            // ,
+            // attached: function() {
+            //     this.customStyle['--ripple-color'] = this.color ;
+            //     this.updateStyles();
+            // }
         });
     </script>
 </dom-module>
